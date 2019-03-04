@@ -1,4 +1,4 @@
-### Bataille-navale
+# Bataille-navale
 
 ## 7a DESCRIPTIF DU PROJET
 ## 7.1	Généralités
