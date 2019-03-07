@@ -23,9 +23,6 @@ SUFFIXES =
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -50,28 +47,17 @@ RM = "C:\Program Files (x86)\clion\bin\cmake\win\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp
+CMAKE_SOURCE_DIR = C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp
+CMAKE_BINARY_DIR = C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@echo No interactive CMake dialog available...
-	"C:\Program Files (x86)\clion\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
-	@echo Running CMake to regenerate build system...
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	"C:\Program Files (x86)\clion\bin\cmake\win\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
@@ -80,11 +66,22 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	"C:\Program Files (x86)\clion\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
-all:
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp\CMakeFiles C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp\CMakeFiles\progress.marks
+all: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug\CMakeFiles C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -107,61 +104,74 @@ preinstall/fast:
 	$(MAKE) -f CMakeFiles\Makefile2 preinstall
 .PHONY : preinstall/fast
 
+# clear depends
+depend:
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+.PHONY : depend
+
 #=============================================================================
-# Target rules for targets named cmTC_f2534
+# Target rules for targets named Repo
 
 # Build rule for target.
-cmTC_f2534:
-	$(MAKE) -f CMakeFiles\Makefile2 cmTC_f2534
-.PHONY : cmTC_f2534
+Repo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 Repo
+.PHONY : Repo
 
 # fast build rule for target.
-cmTC_f2534/fast:
-	$(MAKE) -f CMakeFiles\cmTC_f2534.dir\build.make CMakeFiles/cmTC_f2534.dir/build
-.PHONY : cmTC_f2534/fast
+Repo/fast:
+	$(MAKE) -f CMakeFiles\Repo.dir\build.make CMakeFiles/Repo.dir/build
+.PHONY : Repo/fast
 
-feature_tests.obj: feature_tests.c.obj
+main.obj: main.c.obj
 
-.PHONY : feature_tests.obj
+.PHONY : main.obj
 
 # target to build an object file
-feature_tests.c.obj:
-	$(MAKE) -f CMakeFiles\cmTC_f2534.dir\build.make CMakeFiles/cmTC_f2534.dir/feature_tests.c.obj
-.PHONY : feature_tests.c.obj
+main.c.obj:
+	$(MAKE) -f CMakeFiles\Repo.dir\build.make CMakeFiles/Repo.dir/main.c.obj
+.PHONY : main.c.obj
 
-feature_tests.i: feature_tests.c.i
+main.i: main.c.i
 
-.PHONY : feature_tests.i
+.PHONY : main.i
 
 # target to preprocess a source file
-feature_tests.c.i:
-	$(MAKE) -f CMakeFiles\cmTC_f2534.dir\build.make CMakeFiles/cmTC_f2534.dir/feature_tests.c.i
-.PHONY : feature_tests.c.i
+main.c.i:
+	$(MAKE) -f CMakeFiles\Repo.dir\build.make CMakeFiles/Repo.dir/main.c.i
+.PHONY : main.c.i
 
-feature_tests.s: feature_tests.c.s
+main.s: main.c.s
 
-.PHONY : feature_tests.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-feature_tests.c.s:
-	$(MAKE) -f CMakeFiles\cmTC_f2534.dir\build.make CMakeFiles/cmTC_f2534.dir/feature_tests.c.s
-.PHONY : feature_tests.c.s
+main.c.s:
+	$(MAKE) -f CMakeFiles\Repo.dir\build.make CMakeFiles/Repo.dir/main.c.s
+.PHONY : main.c.s
 
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
-	@echo ... cmTC_f2534
-	@echo ... edit_cache
+	@echo ... depend
 	@echo ... rebuild_cache
-	@echo ... feature_tests.obj
-	@echo ... feature_tests.i
-	@echo ... feature_tests.s
+	@echo ... Repo
+	@echo ... edit_cache
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
 .PHONY : help
 
 
 
 #=============================================================================
 # Special targets to cleanup operation of make.
+
+# Special rule to run CMake to check the build system integrity.
+# No rule that depends on this can have commands that come from listfiles
+# because they might be regenerated.
+cmake_check_build_system:
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+.PHONY : cmake_check_build_system
 

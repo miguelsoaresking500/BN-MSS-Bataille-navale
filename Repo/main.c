@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello, World!\n");
+    //affichage du texte d'aide
+    printf("Texte d'aide\n");
     return 0;
 }

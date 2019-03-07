@@ -34,9 +34,6 @@ SUFFIXES =
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -61,48 +58,55 @@ RM = "C:\Program Files (x86)\clion\bin\cmake\win\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp
+CMAKE_SOURCE_DIR = C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp
+CMAKE_BINARY_DIR = C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/cmTC_f2534.dir
+# Target rules for target CMakeFiles/Repo.dir
 
 # All Build rule for target.
-CMakeFiles/cmTC_f2534.dir/all:
-	$(MAKE) -f CMakeFiles\cmTC_f2534.dir\build.make CMakeFiles/cmTC_f2534.dir/depend
-	$(MAKE) -f CMakeFiles\cmTC_f2534.dir\build.make CMakeFiles/cmTC_f2534.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp\CMakeFiles --progress-num=1,2 "Built target cmTC_f2534"
-.PHONY : CMakeFiles/cmTC_f2534.dir/all
+CMakeFiles/Repo.dir/all:
+	$(MAKE) -f CMakeFiles\Repo.dir\build.make CMakeFiles/Repo.dir/depend
+	$(MAKE) -f CMakeFiles\Repo.dir\build.make CMakeFiles/Repo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target Repo"
+.PHONY : CMakeFiles/Repo.dir/all
 
 # Include target in all.
-all: CMakeFiles/cmTC_f2534.dir/all
+all: CMakeFiles/Repo.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/cmTC_f2534.dir/rule:
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp\CMakeFiles 2
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/cmTC_f2534.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\Clion_Miguel\Repo\cmake-build-debug\CMakeFiles\CMakeTmp\CMakeFiles 0
-.PHONY : CMakeFiles/cmTC_f2534.dir/rule
+CMakeFiles/Repo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Repo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Miguel.SOARES\Documents\GitHub\Bataille-navale\Repo\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/Repo.dir/rule
 
 # Convenience name for target.
-cmTC_f2534: CMakeFiles/cmTC_f2534.dir/rule
+Repo: CMakeFiles/Repo.dir/rule
 
-.PHONY : cmTC_f2534
-
-# clean rule for target.
-CMakeFiles/cmTC_f2534.dir/clean:
-	$(MAKE) -f CMakeFiles\cmTC_f2534.dir\build.make CMakeFiles/cmTC_f2534.dir/clean
-.PHONY : CMakeFiles/cmTC_f2534.dir/clean
+.PHONY : Repo
 
 # clean rule for target.
-clean: CMakeFiles/cmTC_f2534.dir/clean
+CMakeFiles/Repo.dir/clean:
+	$(MAKE) -f CMakeFiles\Repo.dir\build.make CMakeFiles/Repo.dir/clean
+.PHONY : CMakeFiles/Repo.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Repo.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
+
+# Special rule to run CMake to check the build system integrity.
+# No rule that depends on this can have commands that come from listfiles
+# because they might be regenerated.
+cmake_check_build_system:
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+.PHONY : cmake_check_build_system
 
