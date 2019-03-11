@@ -1,3 +1,0 @@
-C:/Users/Miguel.SOARES/Documents/GitHub/Bataille-navale/Repo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Miguel.SOARES/Documents/GitHub/Bataille-navale/Repo/cmake-build-debug/CMakeFiles/Repo.dir
-C:/Users/Miguel.SOARES/Documents/GitHub/Bataille-navale/Repo/cmake-build-debug/CMakeFiles/edit_cache.dir
