@@ -12,14 +12,14 @@
 int Grille1[9][9]=
         {
                 0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,1,0,
+                0,0,0,0,0,0,0,1,0,
+                0,0,0,0,1,0,0,1,0,
+                0,0,0,0,1,0,0,1,0,
                 0,0,0,0,1,0,0,0,0,
-                0,0,0,0,1,0,0,0,0,
-                0,0,0,0,1,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0
+                0,0,1,1,0,0,0,0,0
         };
 
 void Game()
@@ -41,10 +41,26 @@ void Game()
         }
 
 
+
+
         printf("%d",x+1);
-        for(y=0;y<9;y++)
-        {
-            printf("│ %d ",Grille1[x][y]);
+        for(y=0;y<9;y++) {
+
+            if (Grille1[x][y] == 0) {
+
+                printf("│ ~ ");
+            }
+                else if (Grille1[x][y] == 1) {
+                    printf("│ ~ ");
+                } else if (Grille1[x][y] == 2) {
+                    printf("│ x ");
+                } else if (Grille1[x][y] == 3) {
+                    printf("│  ");
+                } else if (Grille1[x][y] == 4) {
+                    printf("│ X ");
+                }
+
+
         }
         if(y==9)
         {
@@ -64,7 +80,7 @@ int main() {
 
     int choix;
 
-    //Menu Principal
+    //Menu
     do {
         printf("\n\n_____Bataille Navale_____\n\n");
         printf("1. Nouvelle Partie");
