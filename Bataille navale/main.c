@@ -5,9 +5,9 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <unistd.h>
+
 #define X 9
 #define Y 9
-
 
 
 #pragma execution_character_set("UTF-8")
@@ -28,7 +28,7 @@ int Grille1[X][Y] =
 void Game() {
     int x;
     int y;
-    printf("  X  A   B   C   D   E   F   G   H   I");
+    printf("\n  X  A   B   C   D   E   F   G   H   I");
     for (x = 0; x < X; x++) {
         printf("\n");
 
@@ -51,7 +51,7 @@ void Game() {
             } else if (Grille1[x][y] == 2) {
                 printf("│ x ");
             } else if (Grille1[x][y] == 3) {
-                printf("│  ");
+                printf("│ ~ ");
             } else if (Grille1[x][y] == 4) {
                 printf("│ X ");
             }
@@ -70,31 +70,67 @@ void Game() {
 void shoot() {
 
     int compteur = 0;
-    int introx;
-    int introy;
+    int introx = 0;
+    int introy = 0;
     int test = 0;
+    char Lettre[1];
     while (test != 1) {
         Game();
-        printf("              \nentrez la cordonée horizontale: ");
+        printf("              \nentrez la cordonée horizontale: \n");
         scanf("%d", &introx);
 
         if (introx == -1) {
             printf("entrez la cordonée horizontale et faites enter\n");
-            printf("entrez la cordonée horizontale ");
+            printf("\nentrez la cordonée horizontale \n");
             scanf("%d", &introx);
         }
-        printf("entrez la coordonee verticale: ");
-        scanf("%d", &introy);
+        printf("\nentrez la coordonee verticale:\n ");
+        scanf("%s", Lettre);
 
-        if (introy == -1) {
-            printf("entrez la cordonée Verticale et faites enter\n");
-            printf("entrez la cordonée Verticale ");
-            scanf("%d", &introy);
-        }
+        //if (introy == -1) {
+        //   printf("entrez la cordonée Verticale et faites enter\n");
+        // printf("entrez la cordonée Verticale ");
+        //scanf("%s", Lettre);
+        //}
         compteur = compteur + 1;
+
+        if (strcmp(Lettre, "A") == 0) {
+            introy = 0;
+        } else if (strcmp(Lettre, "B") == 0) {
+            introy = 1;
+        } else if (strcmp(Lettre, "C") == 0) {
+            introy = 2;
+        } else if (strcmp(Lettre, "D") == 0) {
+            introy = 3;
+        } else if (strcmp(Lettre, "E") == 0) {
+            introy = 4;
+        } else if (strcmp(Lettre, "F") == 0) {
+            introy = 5;
+        } else if (strcmp(Lettre, "G") == 0) {
+            introy = 6;
+        } else if (strcmp(Lettre, "H") == 0) {
+            introy = 7;
+        } else if (strcmp(Lettre, "I") == 0) {
+            introy = 8;
+        }
+
+
+        if (Grille1[introx][introy] == 1) {
+            printf("\ntouché");
+            Grille1[introx][introy] = 2;
+        } else if (Grille1[introx][introy] == 2) {
+            printf("\ndéjà touché");
+        } else if (Grille1[introx][introy] == 3) {
+            printf("\n A l'eau");
+            Grille1[introx][introy] = 3;
+        } else if (Grille1[introx][introy] == 4) {
+            printf("\n coulé");
+            Grille1[introx][introy] = 4;
+        }
 
 
     }
+
 }
 
 
