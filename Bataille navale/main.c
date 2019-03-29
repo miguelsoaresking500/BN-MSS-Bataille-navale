@@ -11,24 +11,46 @@
 
 
 #pragma execution_character_set("UTF-8")
-
+//Grille
 int Grille1[X][Y] =
         {
-                1, 0, 0, 0, 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 2, 2, 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 4,
+                0, 0, 0, 0, 0, 0, 0, 0, 4,
+                0, 0, 0, 0, 0, 0, 0, 0, 4,
+                0, 0, 0, 0, 0, 0, 0, 0, 4,
                 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0
+                0, 0, 0, 3, 3, 3, 0, 0, 0
         };
+int lolo[4] = {0, 0, 0, 0};
+void coule(int x,int y)
+{
+    for (int i=1;i<=4;i++)
+    {
+        if (lolo[i]==i)
+        {
+            for(int s ;s<X;s++)
+            {
+                for(int nt;nt<Y;nt++)
+                {
+                    if(Grille1[x][y] ==10+i)
+                    {
+                        Grille1[x][y] +=10;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
 
 void Game() {
     int x;
     int y;
-    printf("\n  X  A   B   C   D   E   F   G   H   I");
+    printf("\n  X  1   2   3   4   5   6   7   8   9");
     for (x = 0; x < X; x++) {
         printf("\n");
 
@@ -43,16 +65,15 @@ void Game() {
         printf("%d", x + 1);
         for (y = 0; y < X; y++) {
 
-            if (Grille1[x][y] == 0) {
+            coule(x,y);
 
+            if (Grille1[x][y] == 0 || (Grille1[x][y] == 2 || Grille1[x][y] == 3 || Grille1[x][y] == 4)) {
                 printf("│   ");
-            } else if (Grille1[x][y] == 1) {
-                printf("│   ");
-            } else if (Grille1[x][y] == 2) {
-                printf("│ x ");
-            } else if (Grille1[x][y] == 3) {
+            } else if (Grille1[x][y] == 12 || Grille1[x][y] == 13 || Grille1[x][y] == 14) {
+                printf("│ y ");
+            } else if (Grille1[x][y] == -1) {
                 printf("│ ~ ");
-            } else if (Grille1[x][y] == 4) {
+            } else if (Grille1[x][y] == 22 || Grille1[x][y] == 23 || Grille1[x][y] == 24) {
                 printf("│ X ");
             }
 
@@ -68,69 +89,43 @@ void Game() {
 }
 
 void shoot() {
+    int introx;
+    int introy;
+    int GameOver = 0;
 
-    int compteur = 0;
-    int introx = 0;
-    int introy = 0;
-    int test = 0;
-    char Lettre[1];
-    while (test != 1) {
+    do {
         Game();
-        printf("              \nentrez la cordonée horizontale: \n");
+        printf("\ncoordonné horizontale\n");
+        scanf("%d", &introy);
+        printf("\ncoordonné vertical\n");
         scanf("%d", &introx);
 
-        if (introx == -1) {
-            printf("entrez la cordonée horizontale et faites enter\n");
-            printf("\nentrez la cordonée horizontale \n");
-            scanf("%d", &introx);
+        int lulu = Grille1[introx - 1][introy - 1];
+
+        if (lulu == 0) {
+            Grille1[introx - 1][introy - 1] = -1;
+        } else if (lulu == 2 || lulu == 3 || lulu == 4) {
+
+            lolo[Grille1[introx - 1][introy - 1]] += 1;
+            Grille1[introx - 1][introy - 1] += 10;
+
+        } else if (lulu > 10 || lulu == -1) {
+            printf("deja touché mec");
         }
-        printf("\nentrez la coordonee verticale:\n ");
-        scanf("%s", Lettre);
+        GameOver = 1;
 
-        //if (introy == -1) {
-        //   printf("entrez la cordonée Verticale et faites enter\n");
-        // printf("entrez la cordonée Verticale ");
-        //scanf("%s", Lettre);
-        //}
-        compteur = compteur + 1;
+        system("cls");
 
-        if (strcmp(Lettre, "A") == 0) {
-            introy = 0;
-        } else if (strcmp(Lettre, "B") == 0) {
-            introy = 1;
-        } else if (strcmp(Lettre, "C") == 0) {
-            introy = 2;
-        } else if (strcmp(Lettre, "D") == 0) {
-            introy = 3;
-        } else if (strcmp(Lettre, "E") == 0) {
-            introy = 4;
-        } else if (strcmp(Lettre, "F") == 0) {
-            introy = 5;
-        } else if (strcmp(Lettre, "G") == 0) {
-            introy = 6;
-        } else if (strcmp(Lettre, "H") == 0) {
-            introy = 7;
-        } else if (strcmp(Lettre, "I") == 0) {
-            introy = 8;
+        for (int i = 1; i <= 3; i++)
+        {
+            GameOver = 0;
+        }
+        if (GameOver == 1) {
+            printf("victoire");
+            system("pause");
         }
 
-
-        if (Grille1[introx][introy] == 1) {
-            printf("\ntouché");
-            Grille1[introx][introy] = 2;
-        } else if (Grille1[introx][introy] == 2) {
-            printf("\ndéjà touché");
-        } else if (Grille1[introx][introy] == 3) {
-            printf("\n A l'eau");
-            Grille1[introx][introy] = 3;
-        } else if (Grille1[introx][introy] == 4) {
-            printf("\n coulé");
-            Grille1[introx][introy] = 4;
-        }
-
-
-    }
-
+    }while(GameOver==0);
 }
 
 
