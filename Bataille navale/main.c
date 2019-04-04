@@ -25,7 +25,7 @@ int Grille1[X][Y] =
                 0, 0, 0, 3, 3, 3, 0, 0, 0
         };
 //Tableau du Bateau
-int tabbateau[4] = {0, 0, 0, 0};//pour savoir combien de fois on a touché quel bateau
+int tabbateau[5] = {0, 0, 0, 0, 0};//pour savoir combien de fois on a touché quel bateau
 void coule(int x,int y)
 {
     for (int i=1;i<=4;i++)
@@ -119,14 +119,24 @@ void shoot() {
         }
         GameOver = 1;
 
-        //system("cls");
+        system("cls");
 
-        for (int i = 1; i <= 3; i++)
+        for (int i = 2; i <= 4; i++) //
         {   if(tabbateau[i]!=i)
             GameOver = 0;
         }
         if (GameOver == 1) {
-            printf("victoire");
+            printf("\n .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. \n"
+                   "| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |\n"
+                   "| | ____   ____  | || |     _____    | || |     ______   | || |  _________   | || |     ____     | || |  _______     | || |  ____  ____  | |\n"
+                   "| ||_  _| |_  _| | || |    |_   _|   | || |   .' ___  |  | || | |  _   _  |  | || |   .'    `.   | || | |_   __ \\    | || | |_  _||_  _| | |\n"
+                   "| |  \\ \\   / /   | || |      | |     | || |  / .'   \\_|  | || | |_/ | | \\_|  | || |  /  .--.  \\  | || |   | |__) |   | || |   \\ \\  / /   | |\n"
+                   "| |   \\ \\ / /    | || |      | |     | || |  | |         | || |     | |      | || |  | |    | |  | || |   |  __ /    | || |    \\ \\/ /    | |\n"
+                   "| |    \\ ' /     | || |     _| |_    | || |  \\ `.___.'\\  | || |    _| |_     | || |  \\  `--'  /  | || |  _| |  \\ \\_  | || |    _|  |_    | |\n"
+                   "| |     \\_/      | || |    |_____|   | || |   `._____.'  | || |   |_____|    | || |   `.____.'   | || | |____| |___| | || |   |______|   | |\n"
+                   "| |              | || |              | || |              | || |              | || |              | || |              | || |              | |\n"
+                   "| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |\n"
+                   " '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' \n");
             system("pause");
         }
 
@@ -189,7 +199,7 @@ int main() {
 
             case 2:
                 printf("\n\nInstructions\n");
-                printf("\nLes regles s'affichent...");
+                printf("\n\nIl y a 3 bateaux dans cette grille un petit, un moyen et un grand.\n\n Vous devez les couler a tout prix.\n Pour lancer les bonbes qui couleront les bateaux il vous suffit de rentrer des cordonnés verticales et horizontales de la grille.\n\n coulez tous les bateaux et vous serez vicorieux");
                 printf("\nIntroduire 0 pour revenir en arriere: ");
                 scanf("%d", &choix);
                 if (choix == 0) {
