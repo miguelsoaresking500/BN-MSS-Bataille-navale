@@ -24,16 +24,17 @@ int Grille1[X][Y] =
                 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 0, 0, 0, 3, 3, 3, 0, 0, 0
         };
-int lolo[4] = {0, 0, 0, 0};
+//Tableau du Bateau
+int tabbateau[4] = {0, 0, 0, 0};//pour savoir combien de fois on a touché quel bateau
 void coule(int x,int y)
 {
     for (int i=1;i<=4;i++)
     {
-        if (lolo[i]==i)
+        if (tabbateau[i]==i)
         {
-            for(int s ;s<X;s++)
+            for(int s=0 ;s<X;s++)
             {
-                for(int nt;nt<Y;nt++)
+                for(int nt=0;nt<Y;nt++)
                 {
                     if(Grille1[x][y] ==10+i)
                     {
@@ -65,12 +66,12 @@ void Game() {
         printf("%d", x + 1);
         for (y = 0; y < X; y++) {
 
-            coule(x,y);
+            //coule(x,y);
 
             if (Grille1[x][y] == 0 || (Grille1[x][y] == 2 || Grille1[x][y] == 3 || Grille1[x][y] == 4)) {
                 printf("│   ");
             } else if (Grille1[x][y] == 12 || Grille1[x][y] == 13 || Grille1[x][y] == 14) {
-                printf("│ y ");
+                printf("│ x ");
             } else if (Grille1[x][y] == -1) {
                 printf("│ ~ ");
             } else if (Grille1[x][y] == 22 || Grille1[x][y] == 23 || Grille1[x][y] == 24) {
@@ -100,21 +101,25 @@ void shoot() {
         printf("\ncoordonné vertical\n");
         scanf("%d", &introx);
 
-        int lulu = Grille1[introx - 1][introy - 1];
+        int valcase = Grille1[introx - 1][introy - 1];
 
-        if (lulu == 0) {
+        if (valcase == 0) {
             Grille1[introx - 1][introy - 1] = -1;
-        } else if (lulu == 2 || lulu == 3 || lulu == 4) {
+            printf("A l'eau");
+        } else if (valcase == 2 || valcase == 3 || valcase == 4) {
+            printf("Touché");
 
-            lolo[Grille1[introx - 1][introy - 1]] += 1;
+            tabbateau[valcase] += 1;
             Grille1[introx - 1][introy - 1] += 10;
 
-        } else if (lulu > 10 || lulu == -1) {
-            printf("deja touché mec");
+
+
+        } else if (valcase > 10 || valcase == -1) {
+            printf("deja touché");
         }
         GameOver = 1;
 
-        system("cls");
+        //system("cls");
 
         for (int i = 1; i <= 3; i++)
         {
