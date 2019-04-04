@@ -66,7 +66,7 @@ void Game() {
         printf("%d", x + 1);
         for (y = 0; y < X; y++) {
 
-            //coule(x,y);
+            coule(x,y);
 
             if (Grille1[x][y] == 0 || (Grille1[x][y] == 2 || Grille1[x][y] == 3 || Grille1[x][y] == 4)) {
                 printf("│   ");
@@ -122,7 +122,7 @@ void shoot() {
         //system("cls");
 
         for (int i = 1; i <= 3; i++)
-        {
+        {   if(tabbateau[i]!=i)
             GameOver = 0;
         }
         if (GameOver == 1) {
