@@ -8,22 +8,54 @@
 
 #define X 9
 #define Y 9
-
+#define nbgrilles 3
 
 #pragma execution_character_set("UTF-8")
 //Grille
 int Grille1[X][Y] =
         {
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 2, 2, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 4,
-                0, 0, 0, 0, 0, 0, 0, 0, 4,
-                0, 0, 0, 0, 0, 0, 0, 0, 4,
-                0, 0, 0, 0, 0, 0, 0, 0, 4,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 3, 3, 3, 0, 0, 0
+
         };
+void chosegri() {
+
+    int choosegrille = 1000;
+    char randomname[50];
+    do
+    {
+        printf("\n");
+        for (int i = 0; i < nbgrilles; i++) {
+            printf("\tGrille %d",i+1);
+        }
+        printf("\t0.Random");
+
+        printf("\n\nChossissez une grille: ");
+        scanf("%d", &choosegrille);
+
+        if (choosegrille<1 && choosegrille>nbgrilles)
+        {
+            printf("\nCette grille n'est pas disponnible ou n'existe pas !");
+            choosegrille+=1000;
+        }
+    }while(choosegrille<0 && choosegrille>nbgrilles);
+
+    if(choosegrille==0)
+    {
+        choosegrille= rand() % 3;
+    }
+    FILE *fichier = NULL;
+    sprintf(randomname,"Grille%d.txt",choosegrille);
+    fichier =fopen(randomname,"r");
+
+    for (int x = 0; x < X;x++)
+    {
+        for (int y = 0; y <Y ;y++)
+        {
+            char c = fgetc(fichier);
+            Grille1 [x][y]= c - '0';
+        }
+    }
+    fclose(fichier);
+}
 //Tableau du Bateau
 int tabbateau[5] = {0, 0, 0, 0, 0};//pour savoir combien de fois on a touché quel bateau
 void coule(int x,int y)
@@ -94,11 +126,12 @@ void shoot() {
     int introy;
     int GameOver = 0;
 
+    chosegri();
     do {
         Game();
-        printf("\ncoordonné horizontale\n");
+        printf("\ncoordonné Vertical\n");
         scanf("%d", &introy);
-        printf("\ncoordonné vertical\n");
+        printf("\ncoordonné horizontal\n");
         scanf("%d", &introx);
 
         int valcase = Grille1[introx - 1][introy - 1];
@@ -142,6 +175,10 @@ void shoot() {
 
     }while(GameOver==0);
 }
+
+
+
+
 
 
 int main() {
@@ -189,7 +226,7 @@ int main() {
                     choix = +100;
                     break;
                 } else if (choix == 1) {
-                    Game();
+                    shoot();
                 } else {
                     printf("ce n'est pas un choix !\n");
                     break;
